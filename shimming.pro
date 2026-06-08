@@ -3,6 +3,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = shimming
 TEMPLATE = app
 
+DESTDIR = bin
 OBJECTS_DIR = obj
 
 SOURCES += \

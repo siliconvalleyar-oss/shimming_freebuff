@@ -1,0 +1,39 @@
+# Build
+Makefile
+Makefile.*
+obj/
+bin/
+*.o
+*.a
+*.so
+*.la
+*.lo
+*.exe
+
+# Qt Creator
+*.pro.user
+*.pro.user.*
+.qmake.stash
+moc_*.cpp
+ui_*.h
+qrc_*.cpp
+moc_predefs.h
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# External dependencies (cloned repos)
+qextserialport/

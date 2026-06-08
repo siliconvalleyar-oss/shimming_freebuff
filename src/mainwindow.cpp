@@ -8,6 +8,12 @@
 #include <QDebug>
 #include <QScrollBar>
 #include <QDir>
+#include <QFileDialog>
+#include <QFile>
+#include <QTextStream>
+#include <QMessageBox>
+#include <QTextDocument>
+#include <QPrinter>
 
 /*
  * ── Constructor ──────────────────────────────────────────────────────────────
@@ -158,4 +164,82 @@ void MainWindow::on_pushButton_putFrecuency_clicked()
     ui->lineEdit_frecuency->setText(QString::number(frecuencia));
     qDebug() << "MainWindow: display frequency" << frecuencia;
     frecuencia++;
+}
+
+/*
+ * ── Load File ─────────────────────────────────────────────────────────────────
+ *
+ * Opens a file dialog filtered for log/text files and loads the selected
+ * file content into the measurement text editor.
+ * Default directory is logs/.
+ */
+void MainWindow::on_pushButton_load_file_clicked()
+{
+    const QString fileName = QFileDialog::getOpenFileName(
+        this,
+        tr("Open Log File"),
+        "logs/",
+        tr("Text Files (*.txt *.log);;All Files (*)")
+    );
+
+    if (fileName.isEmpty())
+        return;
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, tr("Error"),
+            tr("Cannot open file:\n%1").arg(file.errorString()));
+        return;
+    }
+
+    QTextStream in(&file);
+    ui->plainTextEdit->setPlainText(in.readAll());
+    file.close();
+
+    qDebug() << "MainWindow: loaded file" << fileName;
+}
+
+/*
+ * ── Generate PDF ──────────────────────────────────────────────────────────────
+ *
+ * Exports the current content of the measurement text editor to a PDF file.
+ *
+ * Uses QTextDocument + QPrinter which is the standard Qt5 approach for
+ * PDF generation from plain text. The document uses a monospace font to
+ * preserve column alignment from the measurement log.
+ *
+ * Default save directory is plots/.
+ */
+void MainWindow::on_pushButton_generate_pdf_clicked()
+{
+    const QString fileName = QFileDialog::getSaveFileName(
+        this,
+        tr("Save PDF"),
+        "plots/",
+        tr("PDF Files (*.pdf)")
+    );
+
+    if (fileName.isEmpty())
+        return;
+
+    QTextDocument doc;
+    doc.setPlainText(ui->plainTextEdit->toPlainText());
+
+    /*
+     * Use a monospace font so that the ASCII-table layout of
+     * measurement data is preserved in the PDF output.
+     */
+    QFont font("Courier New", 8);
+    doc.setDefaultFont(font);
+
+    QPrinter printer(QPrinter::HighResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setOutputFileName(fileName);
+    printer.setCreator("shimming");
+
+    doc.print(&printer);
+
+    qDebug() << "MainWindow: PDF generated" << fileName;
+    QMessageBox::information(this, tr("PDF"),
+        tr("PDF saved to:\n%1").arg(fileName));
 }

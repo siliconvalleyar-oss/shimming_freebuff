@@ -53,6 +53,8 @@ private slots:
     void onReceivedData();
     void on_pushButton_putFrecuency_clicked();
     void on_pushButton_save_clicked();
+    void on_pushButton_load_file_clicked();
+    void on_pushButton_generate_pdf_clicked();
 
 private:
     Ui::MainWindow *ui;

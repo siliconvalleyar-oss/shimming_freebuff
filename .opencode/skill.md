@@ -56,9 +56,28 @@ make
 
 ## Dependencies
 
-- Qt5 Core, Gui, Widgets, SerialPort
+- Qt5 Core, Gui, Widgets, SerialPort, PrintSupport
 - `libqt5serialport5-dev` (not `libqextserialport-dev`)
 
 ## Serial Port
 
 Configures `/dev/ttyUSB0` at 2400 baud, 8N1. Connect button toggles the port.
+
+## UI — Tabs
+
+| Tab | Buttons |
+|-----|---------|
+| Connect | Connect (serial port toggle) |
+| Shimming | RECORD, PUT Frecuency, Load File, save, GET, PDF |
+| Config | Create File, Close File |
+
+- **Load File**: opens a `.txt`/`.log` file into the editor
+- **PDF**: exports editor content to PDF via `QTextDocument` + `QPrinter`
+- **save**: writes editor content to the active log file
+
+## Architecture
+
+- `MainWindow` — UI orchestration (does NOT inherit business-logic classes)
+- `TableShimming` — data-driven measurement protocol (no hardcoded switch/if)
+- `RS232` — serial port with configurable `PortConfig` struct
+- `FileShimming` / `FileHandler` — RAII file I/O

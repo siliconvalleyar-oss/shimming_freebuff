@@ -151,20 +151,46 @@
        <string>PUT Frecuency</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_save">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>350</y>
-        <width>111</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>save</string>
-      </property>
+      <widget class="QPushButton" name="pushButton_save">
+       <property name="geometry">
+        <rect>
+         <x>650</x>
+         <y>350</y>
+         <width>111</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>save</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_load_file">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>290</y>
+         <width>111</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Load File</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_generate_pdf">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>360</y>
+         <width>111</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PDF</string>
+       </property>
+      </widget>
      </widget>
-    </widget>
     <widget class="QWidget" name="tab_config">
      <attribute name="title">
       <string>Config</string>

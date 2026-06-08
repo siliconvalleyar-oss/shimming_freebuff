@@ -14,7 +14,7 @@ Los objetos compilados se alojan en `obj/`.
 ## Dependencias
 
 ```bash
-sudo apt install -y qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qt5-qmake libqt5serialport5-dev
+sudo apt install -y qtbase5-dev qtbase5-dev-tools qttools5-dev-tools qt5-qmake libqt5serialport5-dev libqt5printsupport5-dev
 ```
 
 ## Compilación cruzada para Raspberry Pi (aarch64)
@@ -70,3 +70,16 @@ echo "dtoverlay=vc4-fkms-v3d" | sudo tee -a /boot/config.txt
 ```
 
 La aplicación usa EGLFS como plataforma de renderizado en Raspberry Pi, con resolución 800x480 y entrada táctil.
+
+## Funcionalidades
+
+### Carga de archivos
+Botón **Load File** en la pestaña *Shimming* — abre un diálogo para seleccionar archivos `.txt` o `.log` y carga su contenido en el editor de texto.
+
+### Exportación a PDF
+Botón **PDF** en la pestaña *Shimming* — exporta el contenido del editor a un archivo PDF usando `QTextDocument` + `QPrinter`. Usa fuente monoespaciada (Courier New) para preservar el formato tabular de las mediciones. Los archivos se guardan por defecto en `plots/`.
+
+### Requisitos adicionales
+```bash
+sudo apt install -y libqt5printsupport5-dev
+```

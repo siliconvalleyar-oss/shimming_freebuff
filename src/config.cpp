@@ -1,2 +1,2 @@
-// config.cpp - Archivo obsoleto
-#include "config.h"
+// config.cpp - Archivo obsoleto (no compilado)
+// #include "config.hpp"

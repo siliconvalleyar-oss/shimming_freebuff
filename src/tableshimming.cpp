@@ -1,4 +1,4 @@
-#include "tableshimming.h"
+#include "tableshimming.hpp"
 #include <QDebug>
 
 TableShimming::TableShimming()

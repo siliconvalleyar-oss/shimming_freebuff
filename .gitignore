@@ -3,6 +3,7 @@ Makefile
 Makefile.*
 obj/
 bin/
+shimming
 *.o
 *.a
 *.so
@@ -34,6 +35,9 @@ Thumbs.db
 __pycache__/
 *.pyc
 *.pyo
+
+# Cross-compilation build
+build-cross/
 
 # External dependencies (cloned repos)
 qextserialport/

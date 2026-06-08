@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "tableshimming.h"
-#include "fileshimming.h"
-#include "rs232.h"
+#include "tableshimming.hpp"
+#include "fileshimming.hpp"
+#include "rs232.hpp"
 
 namespace Ui {
 class MainWindow;

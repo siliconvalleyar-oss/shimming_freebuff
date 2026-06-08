@@ -1,4 +1,4 @@
-#include "fileshimming.h"
+#include "fileshimming.hpp"
 #include <QDebug>
 #include <QDir>
 #include <QDateTime>

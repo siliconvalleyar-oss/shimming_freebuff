@@ -2,7 +2,7 @@
 #define FILESHIMMING_H
 
 #include <QString>
-#include "file.h"
+#include "file.hpp"
 
 class FileShimming
 {

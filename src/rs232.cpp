@@ -1,4 +1,4 @@
-#include "rs232.h"
+#include "rs232.hpp"
 #include <QDebug>
 #include <QSerialPortInfo>
 
